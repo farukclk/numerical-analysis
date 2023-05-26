@@ -1,3 +1,5 @@
+#!/bin/python3
+
 import math
 
 def f(x):
@@ -52,8 +54,7 @@ def regula_falsi(a, b, hata):
 	if (f(a) * f(b) > 0 ):
 		print("aralikta kök yok")
 		return -1
-		# gercek kok bilinmiyor
-		
+	
 	durma_kosulu = hata + 1  # donguye girebilmek icin
 	iteration = 0	
 	
@@ -96,6 +97,7 @@ def newton_raphson(a, b, tolerans):
 	while (diff > tolerans):
 		iteration += 1
 		x0 = x1;
+		
 		x1 = x0 - f(x0) / fd(x0)
 	
 		result = f(x1)
