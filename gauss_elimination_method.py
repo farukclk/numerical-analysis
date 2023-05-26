@@ -1,7 +1,9 @@
 #!/bin/python3
 
-# augmented matrix
+# it should be augmented matrix
 # row must be equal to coloumn - 1
+# you can change the matrix
+
 MATRIX = [
     [2, 1, -1, 2, 5],
     [4, 5, -3, 6, 9],
@@ -10,13 +12,13 @@ MATRIX = [
 ]
 
 
-NUM_LENGTH = 8      # for print_table()
 
 
+
+NUM_LENGTH = 8              # length of numbers, to more specific solutions increase it. It used by print_table() function.
 ROW = len(MATRIX)
 COLUMN = len(MATRIX[0]);
 X_VALUES = [0] * (COLUMN - 1)
-
 
 
 # update row and column acording to new_matrix
@@ -129,15 +131,5 @@ if __name__ == "__main__":
         print("x" +str(i + 1) +  ": ", j)
 
        
-
-
-
-
-
-
-
-
-
-
 
 
