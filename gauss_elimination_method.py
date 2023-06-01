@@ -1,7 +1,7 @@
 #!/bin/python3
 
 # it should be augmented matrix
-# row must be equal to coloumn - 1
+# rows must be equal to coloumns - 1
 # you can change the matrix
 
 MATRIX = [
@@ -15,9 +15,11 @@ MATRIX = [
 
 
 
-NUM_LENGTH = 8              # length of numbers, to more specific solutions increase it. It used by print_table() function.
+NUM_LENGTH = 5              # length of numbers, to more specific solutions increase it. NUM_LENGTH > 4
+SPACE = 5                   # space count between numbers. It used by print_table() function. 
+
 ROW = len(MATRIX)
-COLUMN = len(MATRIX[0]);
+COLUMN = ROW + 1;
 X_VALUES = [0] * (COLUMN - 1)
 
 
@@ -35,7 +37,7 @@ def print_matrix():
     print("-" * NUM_LENGTH * COLUMN)
     for m in range(ROW):
         for n in range(COLUMN):
-            print( "{}".format(str(MATRIX[m][n])[:NUM_LENGTH]).ljust(NUM_LENGTH) + " "*3, end="")
+            print( "{}".format(str(MATRIX[m][n])[:NUM_LENGTH]).ljust(NUM_LENGTH) + " " * SPACE, end="")
         print()
 
 
@@ -46,19 +48,18 @@ def row_multiply(satir, carpan):
 
 
 
-# satir1 = satir2 * carpim_katsayisi
-def iki_satir_topla(satir1, satir2, carpim_katsayi):
+# row1 = row2 * coefficient
+def sum_two_rows(row1, row2, coefficient):
     for i in range(0, COLUMN):
-        MATRIX[satir1][i] += MATRIX[satir2][i] * carpim_katsayi
+        MATRIX[row1][i] += MATRIX[row2][i] * coefficient
 
 
 
 # check if matrix is valid
 def matrix_control():
     # check if all rows have the same number of columns
-    for i in range(ROW):
-        column = len(MATRIX[i])
-        if (ROW != column - 1):
+    for row in MATRIX:
+        if (COLUMN != len(row)):
             print("This matrix cannot be solved by the gaussian method [!]")
             return 0
         
@@ -107,7 +108,7 @@ def calculate():
                 continue
             
             else:
-                iki_satir_topla(row, pivot, - MATRIX[row][pivot])
+                sum_two_rows(row, pivot, - MATRIX[row][pivot])
 
          
         #print_matrix()             # print matrix step by step 
@@ -122,6 +123,7 @@ def calculate():
 
         X_VALUES[m] = x   # add x to x_values
 
+    
 
 
 if __name__ == "__main__":    
@@ -131,5 +133,4 @@ if __name__ == "__main__":
         print("x" +str(i + 1) +  ": ", j)
 
        
-
 
