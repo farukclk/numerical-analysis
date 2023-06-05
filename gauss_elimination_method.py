@@ -48,7 +48,7 @@ def row_multiply(satir, carpan):
 
 
 
-# row1 = row2 * coefficient
+# row1 = row1 + row2 * coefficient
 def sum_two_rows(row1, row2, coefficient):
     for i in range(0, COLUMN):
         MATRIX[row1][i] += MATRIX[row2][i] * coefficient
@@ -97,7 +97,7 @@ def calculate():
     
         # make pivot 1
         if (pivot_value != 1):
-            row_multiply(pivot, 1 / pivot_value)
+            row_multiply(pivot, 1 / pivot_value)    
         
 
 
@@ -108,10 +108,10 @@ def calculate():
                 continue
             
             else:
-                sum_two_rows(row, pivot, - MATRIX[row][pivot])
+                sum_two_rows(row, pivot, - MATRIX[row][pivot])   # pivot_value = 1,    row +=  1 * -row
 
          
-        #print_matrix()             # print matrix step by step 
+        print_matrix()             # print matrix step by step 
 
 
     # calculate x values and add to list
